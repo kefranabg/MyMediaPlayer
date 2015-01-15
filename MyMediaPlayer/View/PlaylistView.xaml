@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="MyMediaPlayer.View.PlaylistView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:VM="clr-namespace:MyMediaPlayer.ViewModel"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="690" Height="473">
+    <Grid>
+        <Button Command="{Binding DataContext.switchViewCommand, RelativeSource=
+         {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" HorizontalAlignment="Left" Margin="605,10,0,0" VerticalAlignment="Top" Width="75"/>
+        <ListView x:Name="listPlaylist" ItemsSource="{Binding listPlaylist}" SelectedItem="{Binding s}" HorizontalAlignment="Left" Height="285" Margin="10,118,0,0" VerticalAlignment="Top" Width="141" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Playlists" Width="128" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" HorizontalAlignment="Left" Height="369" Margin="164,62,0,0" VerticalAlignment="Top" Width="384">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title" Width="370"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Text="{Binding PlaylistName}" HorizontalAlignment="Left" Height="23" Margin="10,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
+        <Button Command="{Binding AddPlaylistCommand}" Content="Add" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="141"/>
+        <Button Command="{Binding AddMediaCommand}" Content="Add Media to Playlist" HorizontalAlignment="Left" Margin="553,64,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button Content="Delete Selected Medias" HorizontalAlignment="Left" Margin="554,99,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button Command="{Binding DataContext.switchPlaylistCommand, RelativeSource=
+                {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}"
+                CommandParameter="{Binding currentPlaylist}"
+                Content="Read Playlist" HorizontalAlignment="Left" Margin="554,406,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button Command="{Binding DataContext.switchPlaylistCommand, RelativeSource=
+                {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=listMedias, Path=SelectedItems}"
+                Content="Read Selected Medias" HorizontalAlignment="Left" Margin="554,373,0,0" VerticalAlignment="Top" Width="126"/>
+        <TextBlock HorizontalAlignment="Left" Margin="41,35,0,0" TextWrapping="Wrap" Text="Add Playlist" VerticalAlignment="Top" Height="22" Width="110"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="141"/>
+        <TextBlock HorizontalAlignment="Left" Margin="326,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="110"><Run Language="fr-fr" Text="Media list"/></TextBlock>
+    </Grid>
+</UserControl>

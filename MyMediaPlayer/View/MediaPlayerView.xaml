@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="MyMediaPlayer.View.MediaPlayerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:VM="clr-namespace:MyMediaPlayer.ViewModel"
+             mc:Ignorable="d" Height="473" Width="690" x:Name="mediaPlayerUserControl">
+    <Grid>
+        <Button Command="{Binding DataContext.switchViewCommand, RelativeSource=
+         {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" HorizontalAlignment="Left" Margin="15,435,0,0" VerticalAlignment="Top" Width="75"/>
+        <MediaElement x:Name="myMediaElem" HorizontalAlignment="Left" Height="367" Margin="10,10,0,0" VerticalAlignment="Top" Width="670"
+                      LoadedBehavior="Manual" UnloadedBehavior="Stop" Source="{Binding SourceUri}" Volume="{Binding Volume}"
+                      MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Stretch="Fill"/>
+        <Button Command="{Binding PlayPauseCommand}" HorizontalAlignment="Left" Margin="325,429,0,0" VerticalAlignment="Top" Width="38" Height="34" Click="LoadEvents">
+            <Image Source="{Binding IsPlaying}" />
+        </Button>
+        <Slider x:Name="timelineSlider" Value="{Binding setPositionTime}" HorizontalAlignment="Left" Margin="104,399,0,0" Maximum="{Binding setTotalTime, Mode=TwoWay}" VerticalAlignment="Top" Width="476"
+                Thumb.MouseUp="SeekToMediaPosition" IsMoveToPointEnabled="true" TickFrequency="1"
+                Thumb.DragStarted="DragStart" Thumb.DragCompleted="DragEnd" />
+        <TextBlock Text="{Binding PositionTime}" HorizontalAlignment="Left" Margin="29,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="89"/>
+        <Button Command="{Binding NextCommand}" HorizontalAlignment="Left" Margin="385,434,0,0" VerticalAlignment="Top" Width="29" Click="LoadEvents" Height="28">
+            <Image Source="../Img/next.png" Width="29" />
+        </Button>
+        <Button Command="{Binding PreviousCommand}" HorizontalAlignment="Left" Margin="274,434,0,0" VerticalAlignment="Top" Width="29" Click="LoadEvents" Height="28" RenderTransformOrigin="0.052,0.493">
+            <Image Source="../Img/previous.png" Width="29" />
+        </Button>
+        <Button Content="BROWSE" HorizontalAlignment="Left" Margin="605,435,0,0" VerticalAlignment="Top" Width="75" Command="{Binding BrowseCommand}" CommandParameter="{Binding ElementName=myMediaElem}" Click="LoadEvents"/>
+        <Button Command="{Binding StopCommand}" HorizontalAlignment="Left" Margin="152,435,0,0" VerticalAlignment="Top" Width="27" RenderTransformOrigin="0.768,0.699" Click="LoadEvents" Height="24">
+            <Image Source="../Img/stop.png" Width="27" />
+        </Button>
+        <Slider Value="{Binding Volume}" HorizontalAlignment="Left" Margin="494,434,0,0" VerticalAlignment="Top" Width="76" Maximum="1"/>
+        <Button Command="{Binding MuteUnmuteCommand}" Click="MuteUnmute" HorizontalAlignment="Left" Margin="457,434,0,0" VerticalAlignment="Top" Width="29" RenderTransformOrigin="-0.409,0.499" Height="26">
+            <Image Source="{Binding IsMute}" Width="25" Height="16" />
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="591,399,0,0" TextWrapping="Wrap" Text="{Binding TotalTime}" VerticalAlignment="Top" Height="22" Width="89"/>
+    </Grid>
+</UserControl>
