@@ -27,17 +27,17 @@
         <TextBox Text="{Binding PlaylistName}" HorizontalAlignment="Left" Height="23" Margin="10,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
         <Button Command="{Binding AddPlaylistCommand}" Content="Add" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" Width="141"/>
         <Button Command="{Binding AddMediaCommand}" Content="Add Media to Playlist" HorizontalAlignment="Left" Margin="553,64,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button Content="Delete Selected Medias" HorizontalAlignment="Left" Margin="554,99,0,0" VerticalAlignment="Top" Width="126"/>
+        <Button Command="{Binding DeleteMediaCommand}" CommandParameter="{Binding ElementName=listMedias, Path=SelectedItems}" Content="Delete Selected Medias" HorizontalAlignment="Left" Margin="554,99,0,0" VerticalAlignment="Top" Width="126"/>
         <Button Command="{Binding DataContext.switchPlaylistCommand, RelativeSource=
                 {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}"
                 CommandParameter="{Binding currentPlaylist}"
-                Content="Read Playlist" HorizontalAlignment="Left" Margin="554,406,0,0" VerticalAlignment="Top" Width="126"/>
+                Content="Read Playlist" HorizontalAlignment="Left" Margin="554,406,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="0.463,-13.855"/>
         <Button Command="{Binding DataContext.switchPlaylistCommand, RelativeSource=
                 {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}"
                 CommandParameter="{Binding ElementName=listMedias, Path=SelectedItems}"
                 Content="Read Selected Medias" HorizontalAlignment="Left" Margin="554,373,0,0" VerticalAlignment="Top" Width="126"/>
         <TextBlock HorizontalAlignment="Left" Margin="41,35,0,0" TextWrapping="Wrap" Text="Add Playlist" VerticalAlignment="Top" Height="22" Width="110"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="141"/>
+        <Button Command="{Binding DeletePlaylistCommand}" CommandParameter="{Binding ElementName=listPlaylist, Path=SelectedItems}" Content="Delete Selected Playlists" HorizontalAlignment="Left" Margin="10,411,0,0" VerticalAlignment="Top" Width="141"/>
         <TextBlock HorizontalAlignment="Left" Margin="326,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="110"><Run Language="fr-fr" Text="Media list"/></TextBlock>
     </Grid>
 </UserControl>

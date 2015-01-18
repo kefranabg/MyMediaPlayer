@@ -33,7 +33,9 @@ namespace MyMediaPlayer.View
             var dataContext = this.DataContext as PlaylistViewModel;
             PlaylistModel selectedPlaylist = (PlaylistModel)this.listPlaylist.SelectedItem;
             dataContext.selectedPlaylist = selectedPlaylist;
-            ObservableCollectionHelpers.Replace(dataContext.currentPlaylist, selectedPlaylist.ListMedias);
+            if (selectedPlaylist != null)
+                ObservableCollectionHelpers.Replace(dataContext.currentPlaylist, selectedPlaylist.ListMedias);
         }
+
     }
 }
