@@ -25,7 +25,10 @@
         <ListView x:Name="listMedias" ItemsSource="{Binding currentFolder}" HorizontalAlignment="Left" Height="372" VerticalAlignment="Top" Width="670" Margin="10,51,0,0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Title" Width="640" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Width="640" DisplayMemberBinding="{Binding Title}">
+                                    <GridViewColumnHeader Content="Title" 
+                              Command="{Binding SortCommand}" />
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

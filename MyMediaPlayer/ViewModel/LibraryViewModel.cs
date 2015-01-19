@@ -18,6 +18,7 @@ namespace MyMediaPlayer.ViewModel
         public ObservableCollection<MediaModel> videoFolder { get; set; }
         public ObservableCollection<MediaModel> currentFolder { get; set; }
         public RelayCommand ChangeFolderCommand { get; set; }
+        public RelayCommand SortCommand { get; set; }
 
         public void ChangeFolder(object param)
         {
@@ -52,6 +53,19 @@ namespace MyMediaPlayer.ViewModel
                 videoFolder.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));           
         }
 
+        public void Sort(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var requete = from elem in this.currentFolder
+                          orderby elem.Title
+                          select elem;
+            foreach (MediaModel elem in requete)
+                tmp.Add(elem);
+            this.currentFolder.Clear();
+            foreach (MediaModel elem in tmp)
+                this.currentFolder.Add(elem);
+        }
+
         public LibraryViewModel()
         {
             musicFolder = new ObservableCollection<MediaModel>();
@@ -59,6 +73,7 @@ namespace MyMediaPlayer.ViewModel
             videoFolder = new ObservableCollection<MediaModel>();
             currentFolder = new ObservableCollection<MediaModel>();
             ChangeFolderCommand = new RelayCommand(ChangeFolder);
+            SortCommand = new RelayCommand(Sort);
             ScanFolders();
             ObservableCollectionHelpers.Replace(this.currentFolder, this.videoFolder);
         }

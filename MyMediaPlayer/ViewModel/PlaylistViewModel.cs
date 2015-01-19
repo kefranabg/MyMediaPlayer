@@ -31,6 +31,7 @@ namespace MyMediaPlayer.ViewModel
         public RelayCommand AddMediaCommand { get; set; }
         public RelayCommand DeleteMediaCommand { get; set; }
         public RelayCommand DeletePlaylistCommand { get; set; }
+        public RelayCommand SortCommand { get; set; }
 
         public void AddPlaylist(object param)
         {
@@ -65,7 +66,10 @@ namespace MyMediaPlayer.ViewModel
             foreach (MediaModel elem in items)
                 for (int i = 0; i < currentPlaylist.Count; i++)
                     if (currentPlaylist[i] == elem)
+                    {
+                        this.selectedPlaylist.ListMedias.RemoveAt(i);
                         currentPlaylist.RemoveAt(i);
+                    }
         }
 
         public void DeletePlaylist(object param)
@@ -77,6 +81,18 @@ namespace MyMediaPlayer.ViewModel
                         listPlaylist.RemoveAt(i);
         }
 
+        public void Sort(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var requete = from elem in this.currentPlaylist
+                         orderby elem.Title select elem;
+            foreach (MediaModel elem in requete)
+                tmp.Add(elem);
+            this.currentPlaylist.Clear();
+            foreach (MediaModel elem in tmp)
+                this.currentPlaylist.Add(elem);
+        }
+
         public PlaylistViewModel()
         {
             this.playlistName = "";
@@ -86,6 +102,7 @@ namespace MyMediaPlayer.ViewModel
             AddMediaCommand = new RelayCommand(AddMedia);
             DeleteMediaCommand = new RelayCommand(DeleteMedia);
             DeletePlaylistCommand = new RelayCommand(DeletePlaylist);
+            SortCommand = new RelayCommand(Sort);
         }
     }
 }
