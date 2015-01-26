@@ -17,7 +17,7 @@
             </ListView.View>
         </ListView>
 
-        <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" HorizontalAlignment="Left" Height="369" Margin="164,62,0,0" VerticalAlignment="Top" Width="384">
+        <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" HorizontalAlignment="Left" Height="369" Margin="164,62,0,0" VerticalAlignment="Top" Width="384" AllowDrop="True" Drop="listMedias_Drop">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="370">
