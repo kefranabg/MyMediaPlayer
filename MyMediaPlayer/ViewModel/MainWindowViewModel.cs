@@ -1,4 +1,5 @@
 ﻿using Microsoft.Expression.Interactivity.Core;
+using Microsoft.WindowsAPICodePack.Shell;
 using MyMediaPlayer.Helper;
 using MyMediaPlayer.Model;
 using System;
@@ -49,7 +50,7 @@ namespace MyMediaPlayer.ViewModel
             else if ((ViewType)param == ViewType.Playlist)
                 this.CurrentView = playlistView;
             else
-                this.CurrentView = mediaPlayerView;
+                this.CurrentView = mediaPlayerView; 
          }
 
         public void switchPlaylist(object param)

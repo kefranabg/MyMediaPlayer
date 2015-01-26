@@ -41,3 +41,5 @@ C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPla
 C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPlayer\obj\Debug\View\LibraryView.g.cs
 C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPlayer\obj\Debug\View\PlaylistView.baml
 C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPlayer\obj\Debug\View\PlaylistView.g.cs
+C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPlayer\bin\Debug\Microsoft.WindowsAPICodePack.dll
+C:\Users\Abgral_f\workspace\MyWindowsMediaPlayer\MyWindowsMediaPlayer\MyMediaPlayer\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll

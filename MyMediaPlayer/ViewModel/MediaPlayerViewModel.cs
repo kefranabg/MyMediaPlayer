@@ -122,9 +122,14 @@ namespace MyMediaPlayer.ViewModel
                 this.playlist.Clear();
                 this.playlist.Add(new MediaModel(new Uri(dialog.FileName), "browse"));
                 this.currentMedia = 0;
-                this.SourceUri = this.playlist[this.currentMedia].Path;
-                this.Play();
+                this.ChangeSource(this.playlist[this.currentMedia].Path);
             }
+        }
+
+        public void ChangeSource(Uri value)
+        {
+            this.SourceUri = value;
+            this.Play();
         }
 
         public void PlayPause(object param)

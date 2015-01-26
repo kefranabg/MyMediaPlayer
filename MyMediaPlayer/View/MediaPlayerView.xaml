@@ -18,7 +18,7 @@
                 Thumb.MouseUp="SeekToMediaPosition" IsMoveToPointEnabled="true" TickFrequency="1"
                 Thumb.DragStarted="DragStart" Thumb.DragCompleted="DragEnd" />
         <TextBlock Text="{Binding PositionTime}" HorizontalAlignment="Left" Margin="29,399,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22" Width="89"/>
-        <Button Command="{Binding NextCommand}" HorizontalAlignment="Left" Margin="385,434,0,0" VerticalAlignment="Top" Width="29" Click="LoadEvents" Height="28">
+        <Button Command="{Binding 0}" HorizontalAlignment="Left" Margin="385,434,0,0" VerticalAlignment="Top" Width="29" Click="LoadEvents" Height="28">
             <Image Source="../Img/next.png" Width="29" />
         </Button>
         <Button Command="{Binding PreviousCommand}" HorizontalAlignment="Left" Margin="274,434,0,0" VerticalAlignment="Top" Width="29" Click="LoadEvents" Height="28" RenderTransformOrigin="0.052,0.493">
