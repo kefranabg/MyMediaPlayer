@@ -41,6 +41,16 @@ namespace MyMediaPlayer.ViewModel
             this.PlaylistName = "";    
         }
 
+        public void InsertFileListToPlaylist(String[] files)
+        {
+            if (this.selectedPlaylist != null)
+                foreach (String file in files)
+                {
+                    this.currentPlaylist.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
+                    this.selectedPlaylist.ListMedias.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
+                }
+        }
+
         public void AddMedia(object param)
         {
             if (this.selectedPlaylist == null)
@@ -53,11 +63,12 @@ namespace MyMediaPlayer.ViewModel
             bool? dialogResult = dialog.ShowDialog();
             if (dialogResult.Value && dialogResult.HasValue)
             {
-                foreach (String file in dialog.FileNames)
+                this.InsertFileListToPlaylist(dialog.FileNames);
+                /*foreach (String file in dialog.FileNames)
                 {
                     this.currentPlaylist.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
                     this.selectedPlaylist.ListMedias.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
-                }
+                }*/
            }     
         }
 

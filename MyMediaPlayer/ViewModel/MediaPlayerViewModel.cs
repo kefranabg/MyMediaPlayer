@@ -166,6 +166,7 @@ namespace MyMediaPlayer.ViewModel
 
         public void Next(object param)
         {
+            Console.WriteLine("next");
             this.currentMedia = (this.playlist.Count - 1 > this.currentMedia) ? this.currentMedia + 1 : 0;
             if (this.playlist.Count > 0)
                 this.SourceUri = this.playlist[this.currentMedia].Path;
@@ -173,6 +174,7 @@ namespace MyMediaPlayer.ViewModel
 
         public void Previous(object param)
         {
+            Console.WriteLine("previous");
             this.currentMedia = (this.currentMedia > 0) ? this.currentMedia - 1 : this.playlist.Count - 1;
             if (this.playlist.Count > 0)
                 this.SourceUri = this.playlist[this.currentMedia].Path;
@@ -184,6 +186,14 @@ namespace MyMediaPlayer.ViewModel
             this.currentMedia = newCurrentMedia;
             this.SourceUri = this.playlist[this.currentMedia].Path;
             this.IsPlaying = "PLAY";
+        }
+
+        public void createPlaylistByDragAndDrop(string[] filesPaths)
+        {
+            ObservableCollection<MediaModel> DragDropPlaylist = new ObservableCollection<MediaModel>();
+            foreach (String filePath in filesPaths)
+                DragDropPlaylist.Add(new MediaModel(new Uri(filePath),"Drag and Drop"));
+            this.replacePlaylist(DragDropPlaylist, 0);
         }
 
         public MediaPlayerViewModel()

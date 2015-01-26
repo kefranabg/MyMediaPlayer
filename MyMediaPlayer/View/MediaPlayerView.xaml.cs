@@ -88,12 +88,8 @@ namespace MyMediaPlayer.View
 
         private void Grid_Drop(object sender, DragEventArgs e)
         {
-            //this is the droped playlist
             string[] filePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
-            
-            //playing first element in the playlist
-            this.myMediaElem.Source = new Uri(filePaths[0]);
-            this.myMediaElem.Play();
+            ((MediaPlayerViewModel)this.DataContext).createPlaylistByDragAndDrop(filePaths);
         }
     }
 }
