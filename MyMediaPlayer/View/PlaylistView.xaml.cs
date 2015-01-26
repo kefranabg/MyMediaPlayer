@@ -37,5 +37,12 @@ namespace MyMediaPlayer.View
                 ObservableCollectionHelpers.Replace(dataContext.currentPlaylist, selectedPlaylist.ListMedias);
         }
 
+        private void listMedias_Drop(object sender, DragEventArgs e)
+        {
+            //this is the droped playlist
+            string[] filePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
+            //TODO : append to playlist
+        }
+
     }
 }

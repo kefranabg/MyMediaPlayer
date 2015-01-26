@@ -8,9 +8,11 @@
     <Grid>
         <Button Command="{Binding DataContext.switchViewCommand, RelativeSource=
          {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" HorizontalAlignment="Left" Margin="15,435,0,0" VerticalAlignment="Top" Width="75"/>
-        <MediaElement x:Name="myMediaElem" HorizontalAlignment="Left" Height="367" Margin="10,10,0,0" VerticalAlignment="Top" Width="670"
+        <!--Grid Background="Transparent" AllowDrop="True" Drop="Grid_Drop"-->
+            <MediaElement x:Name="myMediaElem" HorizontalAlignment="Left" Height="367" Margin="10,10,0,0" VerticalAlignment="Top" Width="670"
                       LoadedBehavior="Manual" UnloadedBehavior="Stop" Source="{Binding SourceUri}" Volume="{Binding Volume}"
                       MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Stretch="Fill"/>
+        <!--/-->
         <Button Command="{Binding PlayPauseCommand}" HorizontalAlignment="Left" Margin="325,429,0,0" VerticalAlignment="Top" Width="38" Height="34" Click="LoadEvents">
             <Image Source="{Binding IsPlaying}" />
         </Button>
