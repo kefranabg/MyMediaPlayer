@@ -86,3 +86,4 @@ F:\MyMediaPlayer\mymediaplayer\MyMediaPlayer\obj\Debug\View\PlaylistView.baml
 F:\MyMediaPlayer\mymediaplayer\MyMediaPlayer\obj\Debug\MyMediaPlayer.g.resources
 F:\MyMediaPlayer\mymediaplayer\MyMediaPlayer\obj\Debug\MyMediaPlayer.Properties.Resources.resources
 F:\MyMediaPlayer\mymediaplayer\MyMediaPlayer\obj\Debug\MyMediaPlayer.csproj.GenerateResource.Cache
+F:\MyMediaPlayer\mymediaplayer\MyMediaPlayer\bin\Debug\taglib-sharp.dll

@@ -20,9 +20,25 @@
         <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" HorizontalAlignment="Left" Height="369" Margin="164,62,0,0" VerticalAlignment="Top" Width="384" AllowDrop="True" Drop="listMedias_Drop">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="370">
+                    <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="74">
                         <GridViewColumnHeader Content="Title" 
-                              Command="{Binding SortCommand}" />
+                              Command="{Binding SortByTitleCommand}" CommandParameter="Title"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="74">
+                        <GridViewColumnHeader Content="Duration" 
+                              Command="{Binding SortByDurationCommand}" />
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Artists}" Width="74">
+                        <GridViewColumnHeader Content="Artists" 
+                              Command="{Binding SortByArtistsCommand}"  />
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Genres}" Width="74">
+                        <GridViewColumnHeader Content="Genres" 
+                              Command="{Binding SortByGenreCommand}" />
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Album}" Width="74">
+                        <GridViewColumnHeader Content="Album" 
+                              Command="{Binding SortByAlbumCommand}" />
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

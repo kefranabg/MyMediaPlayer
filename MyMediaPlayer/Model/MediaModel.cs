@@ -9,10 +9,9 @@ namespace MyMediaPlayer.Model
     public class MediaModel : BaseModel
     {
 
-        public MediaModel(Uri _path, string _title)
+        public MediaModel(Uri _path)
         {
             this.Path = _path;
-            this.Title = _title;
         }
 
         private Uri path;
@@ -34,6 +33,50 @@ namespace MyMediaPlayer.Model
             {
                 title = value;
                 RaisePropertyChanged("Title");
+            }
+        }
+
+        private string duration;
+        public string Duration
+        {
+            get { return duration; }
+            set
+            {
+                duration = value;
+                RaisePropertyChanged("Duration");
+            }
+        }
+
+        private string album;
+        public string Album
+        {
+            get { return album; }
+            set
+            {
+                album = value;
+                RaisePropertyChanged("Album");
+            }
+        }
+
+        private string genres;
+        public string Genres
+        {
+            get { return genres; }
+            set
+            {
+                genres = value;
+                RaisePropertyChanged("Genres");
+            }
+        }
+
+        private string artists;
+        public string Artists
+        {
+            get { return artists; }
+            set
+            {
+                artists = value;
+                RaisePropertyChanged("Artists");
             }
         }
     }

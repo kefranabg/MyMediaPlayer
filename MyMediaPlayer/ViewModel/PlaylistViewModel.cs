@@ -32,7 +32,11 @@ namespace MyMediaPlayer.ViewModel
         public RelayCommand AddMediaCommand { get; set; }
         public RelayCommand DeleteMediaCommand { get; set; }
         public RelayCommand DeletePlaylistCommand { get; set; }
-        public RelayCommand SortCommand { get; set; }
+        public RelayCommand SortByTitleCommand { get; set; }
+        public RelayCommand SortByDurationCommand { get; set; }
+        public RelayCommand SortByGenresCommand { get; set; }
+        public RelayCommand SortByAlbumCommand { get; set; }
+        public RelayCommand SortByArtistsCommand { get; set; }
 
         public void AddPlaylist(object param)
         {
@@ -41,13 +45,33 @@ namespace MyMediaPlayer.ViewModel
             this.PlaylistName = "";    
         }
 
+        public void FillMediaInfos(MediaModel media, String path)
+        {
+            media.Title = Path.GetFileNameWithoutExtension(path);
+            media.Duration = MediaInfo.getDuration(path);
+            media.Album = MediaInfo.getAlbum(path);
+            String[] List = MediaInfo.getGenres(path);
+            if (List != null)
+                foreach (String Genre in List)
+                    media.Genres += Genre;
+            List = MediaInfo.getArtists(path);
+            if (List != null)
+                foreach (String Artist in List)
+                    media.Artists += Artist;
+        }
+
         public void InsertFileListToPlaylist(String[] files)
         {
             if (this.selectedPlaylist != null)
                 foreach (String file in files)
                 {
-                    this.currentPlaylist.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
-                    this.selectedPlaylist.ListMedias.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
+                    if (Directory.Exists(file) == false)
+                    {
+                        MediaModel newMedia = new MediaModel(new Uri(file));
+                        this.FillMediaInfos(newMedia, file);
+                        this.currentPlaylist.Add(newMedia);
+                        this.selectedPlaylist.ListMedias.Add(newMedia);
+                    }
                 }
         }
 
@@ -62,14 +86,7 @@ namespace MyMediaPlayer.ViewModel
             dialog.Filter = "Media(*.*)|*.*";
             bool? dialogResult = dialog.ShowDialog();
             if (dialogResult.Value && dialogResult.HasValue)
-            {
                 this.InsertFileListToPlaylist(dialog.FileNames);
-                /*foreach (String file in dialog.FileNames)
-                {
-                    this.currentPlaylist.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
-                    this.selectedPlaylist.ListMedias.Add(new MediaModel(new Uri(file), Path.GetFileNameWithoutExtension(file)));
-                }*/
-           }     
         }
 
         public void DeleteMedia(object param)
@@ -93,12 +110,55 @@ namespace MyMediaPlayer.ViewModel
                         listPlaylist.RemoveAt(i);
         }
 
-        public void Sort(object param)
+        public void SortByTitle(object param)
         {
             List<MediaModel> tmp = new List<MediaModel>();
-            var requete = from elem in this.currentPlaylist
-                         orderby elem.Title select elem;
-            foreach (MediaModel elem in requete)
+            var request = from elem in this.currentPlaylist orderby elem.Title select elem;
+            foreach (MediaModel elem in request)
+               tmp.Add(elem);
+            this.currentPlaylist.Clear();
+            foreach (MediaModel elem in tmp)
+               this.currentPlaylist.Add(elem);
+        }
+
+        public void SortByGenres(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var request = from elem in this.currentPlaylist orderby elem.Genres select elem;
+            foreach (MediaModel elem in request)
+                tmp.Add(elem);
+            this.currentPlaylist.Clear();
+            foreach (MediaModel elem in tmp)
+                this.currentPlaylist.Add(elem);
+        }
+
+        public void SortByAlbum(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var request = from elem in this.currentPlaylist orderby elem.Album select elem;
+            foreach (MediaModel elem in request)
+                tmp.Add(elem);
+            this.currentPlaylist.Clear();
+            foreach (MediaModel elem in tmp)
+                this.currentPlaylist.Add(elem);
+        }
+
+        public void SortByArtists(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var request = from elem in this.currentPlaylist orderby elem.Artists select elem;
+            foreach (MediaModel elem in request)
+                tmp.Add(elem);
+            this.currentPlaylist.Clear();
+            foreach (MediaModel elem in tmp)
+                this.currentPlaylist.Add(elem);
+        }
+
+        public void SortByDuration(object param)
+        {
+            List<MediaModel> tmp = new List<MediaModel>();
+            var request = from elem in this.currentPlaylist orderby elem.Duration select elem;
+            foreach (MediaModel elem in request)
                 tmp.Add(elem);
             this.currentPlaylist.Clear();
             foreach (MediaModel elem in tmp)
@@ -114,7 +174,11 @@ namespace MyMediaPlayer.ViewModel
             AddMediaCommand = new RelayCommand(AddMedia);
             DeleteMediaCommand = new RelayCommand(DeleteMedia);
             DeletePlaylistCommand = new RelayCommand(DeletePlaylist);
-            SortCommand = new RelayCommand(Sort);
+            SortByTitleCommand = new RelayCommand(SortByTitle);
+            SortByDurationCommand = new RelayCommand(SortByDuration);
+            SortByAlbumCommand = new RelayCommand(SortByAlbum);
+            SortByArtistsCommand = new RelayCommand(SortByArtists);
+            SortByGenresCommand = new RelayCommand(SortByGenres);
         }
     }
 }

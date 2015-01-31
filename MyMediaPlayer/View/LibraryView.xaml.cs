@@ -21,5 +21,6 @@ namespace MyMediaPlayer.View
         {
             InitializeComponent();
         }
+
     }
 }
