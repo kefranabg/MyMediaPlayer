@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:VM="clr-namespace:MyMediaPlayer.ViewModel"
         xmlns:V="clr-namespace:MyMediaPlayer.View"
-        Title="myMediaPlayer" Height="500" Width="700.522"
-        x:Name="myMediaPlayer">
+        Title="myMediaPlayer"
+        x:Name="myMediaPlayer" Height="700" Width="1300" MinWidth="700" MinHeight="530">
     <Window.DataContext>
         <VM:MainWindowViewModel />
     </Window.DataContext>
@@ -19,5 +19,5 @@
             <V:PlaylistView />
         </DataTemplate>
     </Window.Resources>
-    <ContentControl Content="{Binding CurrentView}" Margin="0,-2,3.6,0.928" RenderTransformOrigin="0.5,0.5" />
+    <ContentControl Content="{Binding CurrentView}" Margin="0,0,0,0" RenderTransformOrigin="0.5,0.5"/>
 </Window>

@@ -5,49 +5,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:VM="clr-namespace:MyMediaPlayer.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="525" Width="690" Height="473">
+             d:DesignHeight="400" d:DesignWidth="525" Width="Auto" Height="Auto" MinWidth="660" MinHeight="490">
     <Grid>
-        <Button Command="{Binding DataContext.switchViewCommand, RelativeSource=
-            {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.MediaPlayer}" Content="MEDIAPLAYER" HorizontalAlignment="Left" Margin="10,437,0,0" VerticalAlignment="Top" Width="96"/>
-        <Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Video}" Content="VIDEOS" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Music}" Content="MUSIC" HorizontalAlignment="Left" Margin="108,10,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Picture}" Content="PICTURES" HorizontalAlignment="Left" Margin="205,10,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="PLAYLIST" HorizontalAlignment="Left" Margin="605,10,0,0" VerticalAlignment="Top" Width="75"
-                Command="{Binding DataContext.switchViewCommand, RelativeSource=
-            {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Playlist}"/>
-        <ListView x:Name="listMedias" ItemsSource="{Binding currentFolder}" HorizontalAlignment="Left" Height="372" VerticalAlignment="Top" Width="670" Margin="10,51,0,0">
+        <ListView x:Name="listMedias" ItemsSource="{Binding currentFolder}" Margin="20,50,20,60" UseLayoutRounding="True" VerticalContentAlignment="Bottom">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="128" DisplayMemberBinding="{Binding Title}">
+                    <GridViewColumn Width="252" DisplayMemberBinding="{Binding Title}">
                         <GridViewColumnHeader Content="Title" 
-                              Command="{Binding SortByTitleCommand}" />
+                              Command="{Binding SortByTitleCommand}" HorizontalContentAlignment="Center" />
                     </GridViewColumn>
-                    <GridViewColumn Width="128" DisplayMemberBinding="{Binding Duration}">
+                    <GridViewColumn Width="252" DisplayMemberBinding="{Binding Duration}">
                         <GridViewColumnHeader Content="Duration" 
                               Command="{Binding SortByDurationCommand}" />
                     </GridViewColumn>
-                    <GridViewColumn Width="128" DisplayMemberBinding="{Binding Artists}">
+                    <GridViewColumn Width="252" DisplayMemberBinding="{Binding Artists}">
                         <GridViewColumnHeader Content="Artists" 
                               Command="{Binding SortByArtistsCommand}" />
                     </GridViewColumn>
-                    <GridViewColumn Width="128" DisplayMemberBinding="{Binding Album}">
+                    <GridViewColumn Width="252" DisplayMemberBinding="{Binding Album}">
                         <GridViewColumnHeader Content="Album" 
                               Command="{Binding SortByAlbumCommand}" />
                     </GridViewColumn>
-                    <GridViewColumn Width="128" DisplayMemberBinding="{Binding Genres}">
+                    <GridViewColumn Width="252" DisplayMemberBinding="{Binding Genres}">
                         <GridViewColumnHeader Content="Genres" 
-                              Command="{Binding SortByGenresCommand}" />
+                              Command="{Binding SortByGenresCommand}" HorizontalContentAlignment="Center" />
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Command="{Binding DataContext.switchPlaylistCommand, RelativeSource=
-            {RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}" Content="ADD PLAYLIST"
-                HorizontalAlignment="Left" Margin="580,437,0,0" VerticalAlignment="Top" Width="100"
-                CommandParameter="{Binding ElementName=listMedias, Path=SelectedItems}" />
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="262,437,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="200,441,0,0" TextWrapping="Wrap" Text="Search :" VerticalAlignment="Top"/>
-        <ComboBox HorizontalAlignment="Left" Margin="426,437,0,0" VerticalAlignment="Top" Width="89"/>
-        <TextBlock HorizontalAlignment="Left" Margin="399,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Language="fr-fr" Text="in"/></TextBlock>
+        <Grid VerticalAlignment="Top" Height="40">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition Width="100"/>
+        		<ColumnDefinition Width="100"/>
+        		<ColumnDefinition Width="100"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Video}" Content="VIDEOS" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="75" Height="20"/>
+        	<Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Music}" Content="MUSIC" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="75" Grid.Column="1" Height="20"/>
+        	<Button Command="{Binding ChangeFolderCommand}" CommandParameter="{x:Static VM:LibraryViewModel+FolderType.Picture}" Content="PICTURES" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="75" Grid.Column="2" Height="20"/>
+        	<Button Content="PLAYLIST" HorizontalAlignment="Right" Margin="0,10,20,10" VerticalAlignment="Center" Width="75"
+        		Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Playlist}" Grid.Column="3" Height="20"/>
+        </Grid>
+        <Grid Height="40" Margin="0" VerticalAlignment="Bottom">
+        	<Grid.ColumnDefinitions>
+        		<ColumnDefinition/>
+        		<ColumnDefinition Width="130"/>
+        		<ColumnDefinition Width="130"/>
+        		<ColumnDefinition/>
+        	</Grid.ColumnDefinitions>
+        	<TextBlock HorizontalAlignment="Right" Margin="0,0,20,0" TextWrapping="Wrap" Text="Search :" VerticalAlignment="Center" Grid.Column="1"/>
+        	<TextBox HorizontalAlignment="Left" Height="30" Margin="20,0,0,0" TextWrapping="Wrap" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Width="100" Grid.Column="2"/>
+        	<Button Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.MediaPlayer}" Content="MEDIAPLAYER" HorizontalAlignment="Left" Margin="20,8.52,0,8.52" VerticalAlignment="Center" Width="96"/>
+        	<Button Command="{Binding DataContext.switchPlaylistCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Content="ADD PLAYLIST"
+        		HorizontalAlignment="Right" Margin="0,9.5,20.001,9.5" VerticalAlignment="Center" Width="100"
+        		CommandParameter="{Binding SelectedItems, ElementName=listMedias}" Grid.Column="3" Height="20" />
+        </Grid>
     </Grid>
 </UserControl>
