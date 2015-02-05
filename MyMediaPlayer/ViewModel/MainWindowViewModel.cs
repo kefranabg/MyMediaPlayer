@@ -41,6 +41,12 @@ namespace MyMediaPlayer.ViewModel
              switchViewCommand = new RelayCommand(switchView);
              switchPlaylistCommand = new RelayCommand(switchPlaylist);
              this.CurrentView = mediaPlayerView;
+             this.playlistView.ImportPlayList();
+         }
+
+        ~MainWindowViewModel()
+         {
+             this.playlistView.ExportPlayList();
          }
 
         public void switchView(object param)

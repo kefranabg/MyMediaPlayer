@@ -123,7 +123,7 @@
                     </ControlTemplate>
                 </Button.Template>
             </Button>
-            <Rectangle Fill="#FF2B6ED2" HorizontalAlignment="Left" Height="4" Margin="-0.614,26.5,0,0" Stroke="#FF2B6ED2" VerticalAlignment="Top" Width="97.114"/>
+            <Rectangle Fill="#FF2B6ED2" HorizontalAlignment="Left" Height="4" Margin="5.386,26.5,0,0" Stroke="#FF2B6ED2" VerticalAlignment="Top" Width="80"/>
             <Button MouseEnter="MouseOver" MouseLeave="MouseLeave" Content="Browse" HorizontalAlignment="Right" VerticalAlignment="Center" Width="48.6" Command="{Binding BrowseCommand}" CommandParameter="{Binding ElementName=myMediaElem}" Click="LoadEvents" Height="16" Grid.Column="3" Margin="0,10,5.2,6" Padding="0" FontFamily="Manteka" FontWeight="Normal" Foreground="#FFA7AAAC">
 				<Button.Template>
                     <ControlTemplate TargetType="Button">

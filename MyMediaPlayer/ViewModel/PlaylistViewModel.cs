@@ -166,12 +166,11 @@ namespace MyMediaPlayer.ViewModel
                 this.currentPlaylist.Add(elem);
         }
 
-        public void ExportPlayList(object param)
+        public void ExportPlayList()
         {
             try
             {
                 Collection<PlaylistModelSerializer> toSerialize = new Collection<PlaylistModelSerializer>();
-                Console.WriteLine("try export playlist");
                 XmlSerializer writer = new XmlSerializer(typeof(Collection<PlaylistModelSerializer>));
 
                 foreach (PlaylistModel playlist in listPlaylist)
@@ -184,11 +183,10 @@ namespace MyMediaPlayer.ViewModel
                 return;
             }
         }
-        public void ImportPlayList(object param)
+        public void ImportPlayList()
         {
             try
             {
-                Console.WriteLine("try import playlist");
                 XmlSerializer deserialize = new XmlSerializer(typeof(Collection<PlaylistModelSerializer>));
                 TextReader reader = new StreamReader("PlayList.xml");
                 object obj = deserialize.Deserialize(reader);
