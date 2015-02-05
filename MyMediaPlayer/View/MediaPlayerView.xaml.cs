@@ -31,6 +31,20 @@ namespace MyMediaPlayer.View
                 this.timelineSlider.Value = this.myMediaElem.Position.TotalMilliseconds;
         }
 
+        private void MouseOver(object sender, MouseEventArgs e)
+        {
+            if (this.Cursor != Cursors.Wait)
+                Mouse.OverrideCursor = Cursors.Hand;
+            (sender as Button).Foreground = new SolidColorBrush(Colors.White);
+        }
+
+        private void MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (this.Cursor != Cursors.Wait)
+                Mouse.OverrideCursor = Cursors.Arrow;
+            (sender as Button).Foreground = new SolidColorBrush(Color.FromRgb(167, 170, 172));
+        }
+
         private void LoadEvents(object sender, RoutedEventArgs e)
         {
             var dataContext = myMediaElem.DataContext as MediaPlayerViewModel;
@@ -91,5 +105,6 @@ namespace MyMediaPlayer.View
             string[] filePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
             ((MediaPlayerViewModel)this.DataContext).createPlaylistByDragAndDrop(filePaths);
         }
+
     }
 }

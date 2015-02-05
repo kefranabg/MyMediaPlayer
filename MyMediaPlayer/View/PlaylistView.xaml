@@ -6,14 +6,47 @@
              xmlns:VM="clr-namespace:MyMediaPlayer.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="Auto" Height="Auto" MinWidth="660" MinHeight="460">
-    <Grid>
+    <Grid Background="#FF16171A">
     	<Grid.ColumnDefinitions>
     		<ColumnDefinition Width="304*"/>
     		<ColumnDefinition Width="705*"/>
-    		<ColumnDefinition Width="291*"/>
+    		<ColumnDefinition Width="304*"/>
     	</Grid.ColumnDefinitions>
-
-        <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" Margin="0,20" AllowDrop="True" Drop="listMedias_Drop" Grid.Column="1">
+		<Grid Height="32" Margin="10,4,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3">
+            	<Grid.RowDefinitions>
+            		<RowDefinition/>
+            		<RowDefinition Height="0*"/>
+            	</Grid.RowDefinitions>
+            	<Grid.ColumnDefinitions>
+            		<ColumnDefinition Width="100"/>
+            		<ColumnDefinition Width="90"/>
+            		<ColumnDefinition Width="70"/>
+            		<ColumnDefinition/>
+            	</Grid.ColumnDefinitions>
+            	<Button Name="library" Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" MouseEnter="MouseOver" MouseLeave="MouseLeave" Content="LIBRARY" HorizontalAlignment="Center" Margin="17.274,7" VerticalAlignment="Center" Width="55.452" HorizontalContentAlignment="Center" Padding="0" Height="18" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" Grid.Column="1">
+					<Button.Template>
+						<ControlTemplate TargetType="Button">
+							 <ContentPresenter Content="{TemplateBinding Content}"/>
+						</ControlTemplate>
+					</Button.Template>
+				</Button>
+            <Button Name="playlist"  MouseEnter="MouseOver" MouseLeave="MouseLeave" Content="PLAYLIST" HorizontalAlignment="Center" Margin="6.731,6" VerticalAlignment="Center" Width="56.538" HorizontalContentAlignment="Center" Padding="0" Height="20" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" Grid.Column="2">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Name="mediaPlayer" Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.MediaPlayer}" MouseEnter="MouseOver" MouseLeave="MouseLeave" Content="MEDIA PLAYER" HorizontalAlignment="Center" Margin="5.144,6" VerticalAlignment="Center" Width="89.712" HorizontalContentAlignment="Center" Padding="0" Height="20" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" >
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Rectangle Fill="#FF2B6ED2" HorizontalAlignment="Left" Height="4" Margin="5.731,26.5,0,0" Stroke="#FF2B6ED2" VerticalAlignment="Top" Width="59.995" Grid.Column="2"/>
+        </Grid>
+        <ListView x:Name="listMedias" ItemsSource="{Binding currentPlaylist}" Margin="0,70,0,20" AllowDrop="True" Drop="listMedias_Drop" Grid.Column="1">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Title}" Width="140">
@@ -39,40 +72,106 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Margin="0,0,2.2,0" Grid.Column="2">
+        <Grid Margin="12,45.4,12,0" Grid.Column="2">
         	<Grid.RowDefinitions>
         		<RowDefinition Height="84"/>
-        		<RowDefinition Height="91"/>
+        		<RowDefinition Height="88.2"/>
         		<RowDefinition/>
-        		<RowDefinition Height="94"/>
+        		<RowDefinition Height="160"/>
         	</Grid.RowDefinitions>
-        	<Button Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" Margin="20,0" VerticalAlignment="Center"/>
-        	<Button Command="{Binding AddMediaCommand}" Content="Add Media to Playlist" Margin="20,0,20,60" VerticalAlignment="Bottom" Grid.Row="1"/>
-        	<Button Command="{Binding DeleteMediaCommand}" CommandParameter="{Binding SelectedItems, ElementName=listMedias}" Content="Delete Selected Medias" Margin="20,0,20,20" VerticalAlignment="Bottom" Grid.Row="1"/>
-        	<Button Command="{Binding DataContext.switchPlaylistCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-        		CommandParameter="{Binding currentPlaylist}"
-        		Content="Read Playlist" Margin="20,0,20,20" VerticalAlignment="Bottom" RenderTransformOrigin="0.463,-13.855" Grid.Row="3"/>
-        	<Button Command="{Binding DataContext.switchPlaylistCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-        		CommandParameter="{Binding SelectedItems, ElementName=listMedias}"
-        		Content="Read Selected Medias" Margin="20,0,20,60" VerticalAlignment="Bottom" Grid.Row="3"/>
+        	<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Margin="-9.595,0,-11.595,0" Background="#FF1F375F" VerticalAlignment="Top" Grid.Row="1" Height="32" HorizontalAlignment="Center" Width="150">
+        		<TextBlock FontFamily="Manteka" FontSize="9" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">Add Media to Playlist</TextBlock>
+				<Button Content=" " Command="{Binding AddMediaCommand}" VerticalAlignment="Center" FontFamily="Manteka" Foreground="White" Padding="0,0,0,1" HorizontalContentAlignment="Stretch" Height="32" Margin="0">
+					<Button.Template>
+        				<ControlTemplate TargetType="{x:Type Button}">
+        					<ContentPresenter Content="{TemplateBinding Content}"/>
+        				</ControlTemplate>
+        			</Button.Template>
+        		</Button>
+        	</Grid>
+			<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Margin="-9.595,44,-11.595,0" Background="#FF1F375F" VerticalAlignment="Top" Grid.Row="1" Height="32" HorizontalAlignment="Center" Width="150">
+        		<TextBlock FontFamily="Manteka" FontSize="9" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">Delete Selected Medias</TextBlock>
+				<Button Content=" " Command="{Binding DeleteMediaCommand}" CommandParameter="{Binding SelectedItems, ElementName=listMedias}" VerticalAlignment="Center" FontFamily="Manteka" Foreground="White" Padding="0,0,0,1" HorizontalContentAlignment="Stretch" Height="32" Margin="0">
+					<Button.Template>
+        				<ControlTemplate TargetType="{x:Type Button}">
+        					<ContentPresenter Content="{TemplateBinding Content}"/>
+        				</ControlTemplate>
+        			</Button.Template>
+        		</Button>
+        	</Grid>
+
+        	
+			
+			
+			<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Margin="-9.595,3.2,-11.595,0" Background="#FF1F375F" VerticalAlignment="Top" Grid.Row="3" Height="32" HorizontalAlignment="Center" Width="150">
+        		<TextBlock FontFamily="Manteka" FontSize="9" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">Read Selected Medias</TextBlock>
+				<Button Content=" " Command="{Binding DataContext.switchPlaylistCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+        		CommandParameter="{Binding SelectedItems, ElementName=listMedias}" VerticalAlignment="Center" FontFamily="Manteka" Foreground="White" Padding="0,0,0,1" HorizontalContentAlignment="Stretch" Height="32" Margin="0">
+					<Button.Template>
+        				<ControlTemplate TargetType="{x:Type Button}">
+        					<ContentPresenter Content="{TemplateBinding Content}"/>
+        				</ControlTemplate>
+        			</Button.Template>
+        		</Button>
+        	</Grid>
+			<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Margin="-9.595,47.2,-11.595,0" Background="#FF1F375F" VerticalAlignment="Top" Grid.Row="3" Height="32" HorizontalAlignment="Center" Width="150">
+        		<TextBlock FontFamily="Manteka" FontSize="9" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">Read Playlist</TextBlock>
+				<Button Content=" " Command="{Binding DataContext.switchPlaylistCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+        		CommandParameter="{Binding currentPlaylist}" VerticalAlignment="Center" FontFamily="Manteka" Foreground="White" Padding="0,0,0,1" HorizontalContentAlignment="Stretch" Height="32" Margin="0">
+					<Button.Template>
+        				<ControlTemplate TargetType="{x:Type Button}">
+        					<ContentPresenter Content="{TemplateBinding Content}"/>
+        				</ControlTemplate>
+        			</Button.Template>
+        		</Button>
+        	</Grid>
         </Grid>
-        <Grid Margin="0">
+        <Grid Margin="0,45.4,0,0">
         	<Grid.RowDefinitions>
-        		<RowDefinition Height="183.623"/>
+        		<RowDefinition Height="160"/>
         		<RowDefinition/>
-        		<RowDefinition Height="45.945"/>
+        		<RowDefinition Height="65"/>
         	</Grid.RowDefinitions>
-        	<Button Command="{Binding DeletePlaylistCommand}" CommandParameter="{Binding SelectedItems, ElementName=listPlaylist}" Content="Delete Selected Playlists" Margin="20,0" VerticalAlignment="Center" Grid.Row="2"/>
+        	<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Margin="0,10,0,0" Background="#FF1F375F" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Width="152.8">
+        	<TextBlock FontFamily="Manteka" FontSize="9.5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">Delete Selected Playlists</TextBlock>
+			<Button Command="{Binding DeletePlaylistCommand}" CommandParameter="{Binding SelectedItems, ElementName=listPlaylist}" Content=" "
+        		HorizontalAlignment="Center" FontSize="9" VerticalAlignment="Center" Width="152.8" FontFamily="Manteka"
+        		Height="31" Foreground="White" Padding="20,8">
+        			<Button.Template>
+						<ControlTemplate TargetType="Button">
+							<ContentPresenter Content="{TemplateBinding Content}"/>
+						</ControlTemplate>
+					</Button.Template>
+			</Button>
+			</Grid>
         	<ListView x:Name="listPlaylist" ItemsSource="{Binding listPlaylist}" SelectedItem="{Binding s}" Margin="10" SelectionChanged="ListView_SelectionChanged" Grid.Row="1">
         		<ListView.View>
         			<GridView>
-        				<GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Playlists" Width="270" />
+        				<GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Playlists" Width="100" />
         			</GridView>
         		</ListView.View>
         	</ListView>
-        	<TextBox Text="{Binding PlaylistName}" Height="23" Margin="20,0,20,60" TextWrapping="Wrap" VerticalAlignment="Bottom"/>
-        	<TextBlock HorizontalAlignment="Center" Margin="0,0,0,100" TextWrapping="Wrap" Text="Add Playlist" VerticalAlignment="Bottom" Height="22"/>
-        	<Button Command="{Binding AddPlaylistCommand}" Content="Add" Margin="20,0,20,20" VerticalAlignment="Bottom"/>
+			<Rectangle Fill="#FF393B3D" Height="23" Margin="20,0,20,59" Stroke="#FF393B3D" VerticalAlignment="Bottom"/>
+        	<TextBox Text="{Binding PlaylistName}" FontSize="15" FontWeight="Bold" Height="22" Margin="20,0,20,60" TextWrapping="Wrap" VerticalAlignment="Bottom" Foreground="White">
+        		<TextBox.Template>
+					<ControlTemplate TargetType="{x:Type TextBox}">
+						<ScrollViewer Name="PART_ContentHost"/>
+					</ControlTemplate>
+				</TextBox.Template>
+			</TextBox>
+        	<TextBlock HorizontalAlignment="Center" FontFamily="Manteka" FontWeight="Normal" Margin="0,0,0,100" TextWrapping="Wrap" Text="Add Playlist" VerticalAlignment="Bottom" Height="22" Foreground="White"/>
+        	<Grid MouseEnter="buttonOver" MouseLeave="buttonLeave" Grid.Column="2" Margin="0,0,0,10" Background="#FF1F375F" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        	<TextBlock FontFamily="Manteka" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center">ADD</TextBlock>
+			<Button Command="{Binding AddPlaylistCommand}" Content=" "
+        		HorizontalAlignment="Center" VerticalAlignment="Center" Width="63.2" FontFamily="Manteka"
+        		Height="31" Foreground="White" Padding="20,8,20,1">
+        			<Button.Template>
+						<ControlTemplate TargetType="Button">
+							<ContentPresenter Content="{TemplateBinding Content}"/>
+						</ControlTemplate>
+					</Button.Template>
+			</Button>
+			</Grid>
         </Grid>
     </Grid>
 </UserControl>

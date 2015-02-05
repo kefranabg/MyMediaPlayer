@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using Microsoft.WindowsAPICodePack.Shell;
 using MyMediaPlayer.Helper;
 using MyMediaPlayer.Model;
 using System;

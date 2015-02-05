@@ -1,5 +1,4 @@
 ﻿using Microsoft.Expression.Interactivity.Core;
-using Microsoft.WindowsAPICodePack.Shell;
 using MyMediaPlayer.Helper;
 using MyMediaPlayer.Model;
 using System;
@@ -8,13 +7,14 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace MyMediaPlayer.ViewModel
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        public enum ViewType { Library, MediaPlayer, Playlist }
+        public enum ViewType { Library, MediaPlayer, Playlist, Exit }
         public RelayCommand switchViewCommand { get; set; }
         public RelayCommand switchPlaylistCommand { get; set; }
 
@@ -45,12 +45,14 @@ namespace MyMediaPlayer.ViewModel
 
         public void switchView(object param)
          {
-            if ((ViewType)param == ViewType.Library)
-                this.CurrentView = libraryView;
-            else if ((ViewType)param == ViewType.Playlist)
-                this.CurrentView = playlistView;
-            else
-                this.CurrentView = mediaPlayerView; 
+             if ((ViewType)param == ViewType.Library)
+                 this.CurrentView = libraryView;
+             else if ((ViewType)param == ViewType.Playlist)
+                 this.CurrentView = playlistView;
+             else if ((ViewType)param == ViewType.MediaPlayer)
+                 this.CurrentView = mediaPlayerView;
+             else
+                 Application.Current.Shutdown();
          }
 
         public void switchPlaylist(object param)
