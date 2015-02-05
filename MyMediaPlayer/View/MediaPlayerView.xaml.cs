@@ -31,6 +31,12 @@ namespace MyMediaPlayer.View
                 this.timelineSlider.Value = this.myMediaElem.Position.TotalMilliseconds;
         }
 
+        private void start()
+        {
+            this.myMediaElem.Play();
+            this.timer.Start();
+        }
+
         private void MouseOver(object sender, MouseEventArgs e)
         {
             if (this.Cursor != Cursors.Wait)
@@ -48,9 +54,9 @@ namespace MyMediaPlayer.View
         private void LoadEvents(object sender, RoutedEventArgs e)
         {
             var dataContext = myMediaElem.DataContext as MediaPlayerViewModel;
-            dataContext.PlayEvent += (_sender, _e) => {
-                this.myMediaElem.Play();
-                this.timer.Start();
+            dataContext.PlayEvent += (_sender, _e) =>
+            {
+                this.start();
             };
             dataContext.PauseEvent += (_sender, _e) => { this.myMediaElem.Pause(); this.timer.Stop(); };
             dataContext.StopEvent += (_sender, _e) => { this.myMediaElem.Stop(); };
@@ -104,6 +110,7 @@ namespace MyMediaPlayer.View
         {
             string[] filePaths = e.Data.GetData(DataFormats.FileDrop, true) as string[];
             ((MediaPlayerViewModel)this.DataContext).createPlaylistByDragAndDrop(filePaths);
+            this.start();
         }
 
     }

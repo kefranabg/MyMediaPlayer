@@ -42,7 +42,7 @@ namespace MyMediaPlayer.ViewModel
 
         public String IsMute
         {
-            get { return mediaPlayer.IsMute ? "../Img/unmute.PNG" : "../Img/mute.PNG"; }
+            get { return mediaPlayer.IsMute ? "../Img/mute.PNG" : "../Img/unmute.PNG"; }
         }
 
         public bool setIsMute

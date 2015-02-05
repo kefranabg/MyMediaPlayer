@@ -90,7 +90,8 @@ namespace MyMediaPlayer.ViewModel
             // Scan Video folder and add videos files to list
             pathFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
             foreach (string file in Directory.EnumerateFiles(pathFolder)
-                .Where(s => s.EndsWith(".mpg") || s.EndsWith(".mpeg") || s.EndsWith(".mp4") || s.EndsWith(".avi") || s.EndsWith(".mpeg")))
+                .Where(s => s.EndsWith(".mpg") || s.EndsWith(".mpeg") || s.EndsWith(".mp4") || s.EndsWith(".avi") || s.EndsWith(".mpeg")
+                || s.EndsWith(".wmv")))
             {
                 MediaModel newMedia = new MediaModel(new Uri(file));
                 this.FillMediaInfos(newMedia, file);

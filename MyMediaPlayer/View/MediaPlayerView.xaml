@@ -11,104 +11,104 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid Margin="0,0,0,10" VerticalAlignment="Bottom">
-        	<Grid.ColumnDefinitions>
-        		<ColumnDefinition Width="50"/>
-        		<ColumnDefinition Width="50"/>
-        		<ColumnDefinition Width="50"/>
-        		<ColumnDefinition Width="50"/>
-        		<ColumnDefinition Width="156"/>
-        		<ColumnDefinition/>
-        		<ColumnDefinition Width="127"/>
-        	</Grid.ColumnDefinitions>
-        	<Button Command="{Binding PlayPauseCommand}" HorizontalAlignment="Center" Margin="7.5,0.275" VerticalAlignment="Center" Width="25" Height="25" Click="LoadEvents" Grid.Column="2">
-        		<Image Source="{Binding IsPlaying}" />
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						 <ContentPresenter Content="{TemplateBinding Content}"/>
-					</ControlTemplate>
-				</Button.Template>
-        	</Button>
-        	<Button Command="{Binding NextCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" Click="LoadEvents" Height="25" Grid.Column="3">
-        		<Image Source="../Img/next.png" />
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						 <ContentPresenter Content="{TemplateBinding Content}"/>
-					</ControlTemplate>
-				</Button.Template>
-        	</Button>
-        	<Button Command="{Binding PreviousCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" Click="LoadEvents" Height="25" RenderTransformOrigin="0.052,0.493" Grid.Column="1">
-        		<Image Source="../Img/previous.png" />
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						 <ContentPresenter Content="{TemplateBinding Content}"/>
-					</ControlTemplate>
-				</Button.Template>
-        	</Button>
-        	<Button Command="{Binding StopCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" RenderTransformOrigin="0.768,0.699" Click="LoadEvents" Height="25" Padding="0">
-        		<Image Source="../Img/stop.png" />
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						 <ContentPresenter Content="{TemplateBinding Content}"/>
-					</ControlTemplate>
-				</Button.Template>
-        	</Button>
-        	<Slider Value="{Binding Volume}" Margin="47,6.776,0,10" VerticalAlignment="Center" Maximum="1" Grid.Column="6" Height="18.774" HorizontalAlignment="Left" Width="70"/>
-        	<Button Command="{Binding MuteUnmuteCommand}" Click="MuteUnmute" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="30" RenderTransformOrigin="-0.409,0.499" Height="30" Grid.Column="6">
-        		<Image Source="{Binding IsMute}" />
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						 <ContentPresenter Content="{TemplateBinding Content}"/>
-					</ControlTemplate>
-				</Button.Template>
-        	</Button>
-        	<TextBlock Text="{Binding PositionTime}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Height="22" Width="66" FontSize="13" FontWeight="Normal" Foreground="White" FontFamily="Manteka" Grid.Column="4" Margin="0" Padding="0,4,0,0"/>
-        	<TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding TotalTime}" VerticalAlignment="Center" Height="22" Width="66" Grid.Column="4" FontSize="13" FontWeight="Normal" Foreground="White" FontFamily="Manteka" Margin="75,0,0,0" Padding="0,4,0,0"/>
-        	<Slider x:Name="timelineSlider" Value="{Binding setPositionTime}" Margin="0,6.775" Maximum="{Binding setTotalTime, Mode=TwoWay}" VerticalAlignment="Center"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="156"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="127"/>
+            </Grid.ColumnDefinitions>
+            <Button Command="{Binding PlayPauseCommand}" HorizontalAlignment="Center" Margin="7.5,0.275" VerticalAlignment="Center" Width="25" Height="25" Click="LoadEvents" Grid.Column="2">
+                <Image Source="{Binding IsPlaying}" />
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Command="{Binding NextCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" Click="LoadEvents" Height="25" Grid.Column="3">
+                <Image Source="../Img/next.png" />
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Command="{Binding PreviousCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" Click="LoadEvents" Height="25" RenderTransformOrigin="0.052,0.493" Grid.Column="1">
+                <Image Source="../Img/previous.png" />
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Button Command="{Binding StopCommand}" HorizontalAlignment="Center" Margin="10,2.775" VerticalAlignment="Center" Width="25" RenderTransformOrigin="0.768,0.699" Click="LoadEvents" Height="25" Padding="0">
+                <Image Source="../Img/stop.png" />
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Slider Value="{Binding Volume}" Margin="47.2,7,0,5.2" VerticalAlignment="Center" Maximum="1" Grid.Column="6" Height="23" HorizontalAlignment="Left" Width="70"/>
+            <Button Command="{Binding MuteUnmuteCommand}" Click="MuteUnmute" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" Width="30" RenderTransformOrigin="-0.409,0.499" Height="30" Grid.Column="6">
+                <Image Source="{Binding IsMute}" />
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <TextBlock Text="{Binding PositionTime}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Height="22" Width="66" FontSize="13" FontWeight="Normal" Foreground="White" FontFamily="Manteka" Grid.Column="4" Margin="0" Padding="0,4,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding TotalTime}" VerticalAlignment="Center" Height="22" Width="66" Grid.Column="4" FontSize="13" FontWeight="Normal" Foreground="White" FontFamily="Manteka" Margin="75,0,0,0" Padding="0,4,0,0"/>
+            <Slider x:Name="timelineSlider" Value="{Binding setPositionTime}" Margin="0,6.775" Maximum="{Binding setTotalTime, Mode=TwoWay}" VerticalAlignment="Center"
         		MouseUp="SeekToMediaPosition" IsMoveToPointEnabled="true" TickFrequency="1"
         		Thumb.DragStarted="DragStart" Thumb.DragCompleted="DragEnd" Grid.Column="5" Height="22">
-			</Slider>
-        	<Rectangle Grid.Column="4" Fill="White" HorizontalAlignment="Center" Height="15" Margin="0,2,30,0" Stroke="Black" VerticalAlignment="Center" Width="4" RenderTransformOrigin="0.5,0.5">
-        		<Rectangle.RenderTransform>
-        			<TransformGroup>
-        				<ScaleTransform/>
-        				<SkewTransform/>
-        				<RotateTransform Angle="32.363"/>
-        				<TranslateTransform/>
-        			</TransformGroup>
-        		</Rectangle.RenderTransform>
-        	</Rectangle>
+            </Slider>
+            <Rectangle Grid.Column="4" Fill="White" HorizontalAlignment="Center" Height="15" Margin="0,2,30,0" Stroke="Black" VerticalAlignment="Center" Width="4" RenderTransformOrigin="0.5,0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="32.363"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
         </Grid>
-            <Grid Margin="0,0,0,50" VerticalAlignment="Bottom">
+        <Grid Margin="0,0,0,50" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition />
                 <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
         </Grid>
-            <Grid Margin="0,45,0,55" Background="Black">
-            	<MediaElement x:Name="myMediaElem" Margin="0"
+        <Grid Margin="0,45,0,55" Background="Black">
+            <MediaElement x:Name="myMediaElem" Margin="0"
             		LoadedBehavior="Manual" UnloadedBehavior="Stop" Source="{Binding SourceUri}" Volume="{Binding Volume}"
             		MediaOpened="Element_MediaOpened" MediaEnded="Element_MediaEnded" Stretch="Fill" OpacityMask="Black"/>
-            </Grid>
-            <Grid Height="32" Margin="10,4,0,0" VerticalAlignment="Top">
-            	<Grid.RowDefinitions>
-            		<RowDefinition/>
-            		<RowDefinition Height="0*"/>
-            	</Grid.RowDefinitions>
-            	<Grid.ColumnDefinitions>
-            		<ColumnDefinition Width="100"/>
-            		<ColumnDefinition Width="90"/>
-            		<ColumnDefinition Width="70"/>
-            		<ColumnDefinition Width="77*"/>
-            		<ColumnDefinition/>
-            	</Grid.ColumnDefinitions>
-            	<Button Name="library"  MouseEnter="MouseOver" MouseLeave="MouseLeave" Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" HorizontalAlignment="Center" Margin="17.274,7" VerticalAlignment="Center" Width="55.452" HorizontalContentAlignment="Center" Padding="0" Height="18" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" Grid.Column="1">
-					<Button.Template>
-						<ControlTemplate TargetType="Button">
-							 <ContentPresenter Content="{TemplateBinding Content}"/>
-						</ControlTemplate>
-					</Button.Template>
-				</Button>
+        </Grid>
+        <Grid Height="32" Margin="10,4,0,0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Name="library"  MouseEnter="MouseOver" MouseLeave="MouseLeave" Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Library}" Content="LIBRARY" HorizontalAlignment="Center" Margin="17.274,7" VerticalAlignment="Center" Width="55.452" HorizontalContentAlignment="Center" Padding="0" Height="18" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" Grid.Column="1">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
             <Button Name="playlist"  MouseEnter="MouseOver" MouseLeave="MouseLeave" Command="{Binding DataContext.switchViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{x:Static VM:MainWindowViewModel+ViewType.Playlist}" Content="PLAYLIST" HorizontalAlignment="Center" Margin="6.731,6" VerticalAlignment="Center" Width="56.538" HorizontalContentAlignment="Center" Padding="0" Height="20" FontFamily="Manteka" FontWeight="Normal" BorderThickness="0" Background="Transparent" BorderBrush="Transparent" Foreground="#FFA7AAAC" Grid.Column="2">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -125,12 +125,12 @@
             </Button>
             <Rectangle Fill="#FF2B6ED2" HorizontalAlignment="Left" Height="4" Margin="5.386,26.5,0,0" Stroke="#FF2B6ED2" VerticalAlignment="Top" Width="80"/>
             <Button MouseEnter="MouseOver" MouseLeave="MouseLeave" Content="Browse" HorizontalAlignment="Right" VerticalAlignment="Center" Width="48.6" Command="{Binding BrowseCommand}" CommandParameter="{Binding ElementName=myMediaElem}" Click="LoadEvents" Height="16" Grid.Column="3" Margin="0,10,5.2,6" Padding="0" FontFamily="Manteka" FontWeight="Normal" Foreground="#FFA7AAAC">
-				<Button.Template>
+                <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <ContentPresenter Content="{TemplateBinding Content}"/>
                     </ControlTemplate>
-                </Button.Template>	
-			</Button>
+                </Button.Template>
+            </Button>
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>
