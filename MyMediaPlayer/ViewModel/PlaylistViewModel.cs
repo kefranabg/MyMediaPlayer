@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace MyMediaPlayer.ViewModel
 {
@@ -162,6 +164,44 @@ namespace MyMediaPlayer.ViewModel
             this.currentPlaylist.Clear();
             foreach (MediaModel elem in tmp)
                 this.currentPlaylist.Add(elem);
+        }
+
+        public void ExportPlayList(object param)
+        {
+            try
+            {
+                Collection<PlaylistModelSerializer> toSerialize = new Collection<PlaylistModelSerializer>();
+                Console.WriteLine("try export playlist");
+                XmlSerializer writer = new XmlSerializer(typeof(Collection<PlaylistModelSerializer>));
+
+                foreach (PlaylistModel playlist in listPlaylist)
+                    toSerialize.Add(playlist.getSerializer());
+                using (Stream fileStream = File.Open("PlayList.xml", FileMode.Create))
+                    writer.Serialize(fileStream, toSerialize);
+            }
+            catch (Exception)
+            {
+                return;
+            }
+        }
+        public void ImportPlayList(object param)
+        {
+            try
+            {
+                Console.WriteLine("try import playlist");
+                XmlSerializer deserialize = new XmlSerializer(typeof(Collection<PlaylistModelSerializer>));
+                TextReader reader = new StreamReader("PlayList.xml");
+                object obj = deserialize.Deserialize(reader);
+                Collection<PlaylistModelSerializer> toDeSerialize = (Collection<PlaylistModelSerializer>)obj;
+                listPlaylist.Clear();
+
+                foreach (PlaylistModelSerializer playlist in toDeSerialize)
+                    listPlaylist.Add(playlist.getDeSerializer());
+            }
+            catch (Exception)
+            {
+                return;
+            }
         }
 
         public PlaylistViewModel()
