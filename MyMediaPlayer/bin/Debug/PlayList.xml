@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<ArrayOfPlaylistModelSerializer xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <PlaylistModelSerializer>
+    <Name>playlist</Name>
+    <media>
+      <MediaModelSerializer>
+        <path>file:///C:/Users/Abgral_f/Videos/test-mpeg.mpg</path>
+        <title>test-mpeg</title>
+        <duration>00:21</duration>
+        <album />
+        <genres />
+        <artists />
+      </MediaModelSerializer>
+      <MediaModelSerializer>
+        <path>file:///C:/Users/Abgral_f/Videos/Wildlife.wmv</path>
+        <title>Wildlife</title>
+        <duration>00:36</duration>
+        <album />
+        <genres />
+        <artists />
+      </MediaModelSerializer>
+      <MediaModelSerializer>
+        <path>file:///C:/Users/Abgral_f/Music/intro-dotnet-3.mp4</path>
+        <title>intro-dotnet-3</title>
+        <duration>40:33</duration>
+        <album />
+        <genres />
+        <artists />
+      </MediaModelSerializer>
+    </media>
+  </PlaylistModelSerializer>
+</ArrayOfPlaylistModelSerializer>
